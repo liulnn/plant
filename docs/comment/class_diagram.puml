@@ -1,0 +1,21 @@
+@startuml
+
+class Topic {
+    long TopicId
+    string Name
+    datetime Created
+    datetime Updated
+}
+
+class Comment {
+	long CommentId
+	string Name
+	string Summary
+    string Detail
+    datetime Created
+    datetime Updated
+}
+
+
+
+@enduml

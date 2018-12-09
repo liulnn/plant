@@ -1,20 +1,23 @@
 @startuml
 
 class Topic {
-    long TopicId
-    string Name
-    datetime Created
-    datetime Updated
+    long topic_id
+    string name
+
+    init(name string): Topic
 }
 
 class Comment {
-	long CommentId
-    long TopicId
-	string Source
-	string Username
-    string Content
-    datetime Created
+	long comment_id
+    long topic_id
+	string source
+	string username
+    string content
+
+    init(topic_id: long, source: string, username: string, content: string): Comment
 }
+
+Topic "1" -- "n" Comment
 
 
 @enduml

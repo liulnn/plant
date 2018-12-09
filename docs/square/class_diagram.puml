@@ -1,0 +1,137 @@
+@startuml
+
+set namespaceSeparator ::
+
+Enum Color {
+    Black
+    White
+}
+
+Enum Direction {
+    West
+    WestNorth
+    North
+    EastNorth
+    East
+    EastSouth
+    South
+    WestSouth
+}
+
+class Army {
+    Color color
+    Game game
+    Board board
+    List<Ok> oks
+
+    init(color: Color, game: Game): Army
+    downPiece(piece: Piece): boolean, Error
+    removePiece(piece: Piece): boolean, Error
+    movePiece(piece: Piece, dir: Direction): boolean, Error
+    eatPiece(piece: Piece): boolean, Error
+}
+
+enum BoardStatus {
+	Down //下子阶段
+	Remove //提子阶段
+	Focus //对战阶段-选中
+	Move //对战阶段-移动
+	Eat //对战阶段-吃子
+}
+
+class Board {
+    Game game
+    int height
+    int width
+    Piece[][] panel
+    init(height: int, width: int, game: Game): Board
+
+    getPosition(x: int, y: int): Position
+}
+
+Enum PieceStatus {
+
+
+}
+
+class Position {
+    int x
+    int y
+}
+
+class Piece {
+    Position position
+    Army army
+    Board board
+    PieceStatus status
+    init(position: Position, army: Army, board: Board): Piece
+}
+
+Enum Ok::Square {
+    // 方
+    WestNorth
+    WestSouth
+    EastNorth
+    EastSouth
+}
+
+Enum Ok::Line {
+    // 拉
+    SouthLat
+    CenterLat
+    NorthLat
+    WestLon
+    CenterLon
+    EastLon
+}
+
+Enum Ok::WNESOblique {
+    // 西北东南斜
+    LeftThree
+    LeftFour
+    Center
+    RightFour
+    RightThree
+}
+
+Enum Ok::ENWSOblique {
+    // 东北西南斜
+    LeftThree
+    LeftFour
+    Center
+    RightFour
+    RightThree
+}
+
+Enum GameStatus {
+	Start
+	Press
+	End
+}
+
+class Game {
+    GameStatus status
+    Board board
+    Army write
+    Army black
+    Army current
+
+    init(): Game
+    changeArmy(): Army
+
+}
+
+Game "1" -- "1" GameStatus
+Game "1" -- "2" Army
+Game "1" -- "1" Board
+Army "1" -- "1" Board
+Army "1" -- "1" Color
+Army "1" -- "n" Ok
+Army "1" -- "n" Direction
+Army "1" -- "n" Piece
+Board "1" -- "n" Piece
+Board "1" -- "1" BoardStatus
+Piece "1" -- "1" PieceStatus
+Piece "1" -- "1" Position
+
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+
+class App {
+	string app_id
+	string name
+	string package_name
+	string secret
+
+	init(name: string, package_name string): App
+	verify(app_id: string, secret: string): boolean
+	reset_secret(): string
+}
+
+@enduml

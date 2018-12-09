@@ -1,12 +1,12 @@
 @startuml
 
 class Plant {
-	long PlantId
-	string Name
-	string Summary
-    string Detail
-    datetime Created
-    datetime Updated
+	long plant_id
+	string name
+	string summary
+    string detail
+
+    init(name: string, summary: string, detail: string): Plant
 }
 
 @enduml

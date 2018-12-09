@@ -9,13 +9,12 @@ class Topic {
 
 class Comment {
 	long CommentId
-	string Name
-	string Summary
-    string Detail
+    long TopicId
+	string Source
+	string Username
+    string Content
     datetime Created
-    datetime Updated
 }
-
 
 
 @enduml

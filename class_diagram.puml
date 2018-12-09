@@ -1,0 +1,12 @@
+@startuml
+
+class Plant {
+	long PlantId
+	string Name
+	string Summary
+    string Detail
+    datetime Created
+    datetime Updated
+}
+
+@enduml
